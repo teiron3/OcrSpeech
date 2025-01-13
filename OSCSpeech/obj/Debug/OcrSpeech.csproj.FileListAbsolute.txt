@@ -1,0 +1,14 @@
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\obj\Debug\OcrSpeech.csprojResolveAssemblyReference.cache
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\obj\Debug\Application.g.cs
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\obj\Debug\OcrSpeech_MarkupCompile.cache
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\obj\Debug\MainWindow.g.cs
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\obj\Debug\OcrSpeech_MarkupCompile.lref
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\build\OcrSpeech.exe
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\build\OcrSpeech.pdb
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\build\Windows.Foundation.FoundationContract.winmd
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\build\Windows.Foundation.UniversalApiContract.winmd
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\build\Windows.WinMD
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\obj\Debug\MainWindow.baml
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\obj\Debug\OcrSpeech.g.resources
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\obj\Debug\OcrSpeech.exe
+C:\Users\teiro\Desktop\wsbWritable\OSCSpeech\obj\Debug\OcrSpeech.pdb
