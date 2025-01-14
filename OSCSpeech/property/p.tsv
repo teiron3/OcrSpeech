@@ -7,3 +7,5 @@ bool	IsSpeakTextPosition	true
 bool	IsSpeakTextEnd     	false
 bool	IsSpeakTextNewLine 	false
 string	TextSpeech	""
+int	selectionStart	0
+int	selectionLength	0
