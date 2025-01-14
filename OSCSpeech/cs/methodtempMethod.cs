@@ -75,21 +75,47 @@ namespace OcrSpeech
 			CultureInfo.CurrentUICulture = CultureInfo.CreateSpecificCulture("ja");
 			return;
 		}
-		public static async Task toTextSpeech(ViewModel vm, object parameter){
-			if (vm.OcrText.Length < 1)return;
-			if(vm.IsSpeakTextPosition){
+		public static async Task toTextSpeech(ViewModel vm, object parameter)
+		{
+			if (vm.OcrText.Length < 1) return;
+			if (vm.IsSpeakTextPosition)
+			{
+				if (vm.selectionStart == 0)
+				{
+					vm.TextSpeech = vm.OcrText + vm.TextSpeech;
+					vm.selectionStart = vm.OcrText.Length;
+					return;
+				}
+				if (vm.selectionStart == vm.TextSpeech.Length)
+				{
+					vm.TextSpeech += vm.OcrText;
+					vm.selectionStart = vm.TextSpeech.Length;
+					return;
+				}
+				int len = vm.TextSpeech.Length + vm.OcrText.Length;
+				vm.TextSpeech = vm.TextSpeech.Substring(0, vm.selectionStart) + vm.OcrText + vm.TextSpeech.Substring(vm.selectionStart + 1);
+				vm.selectionStart = len;
 				return;
 			}
-			if(vm.IsSpeakTextEnd){
+			if (vm.IsSpeakTextEnd)
+			{
 				vm.TextSpeech += vm.OcrText;
+				vm.selectionStart = vm.TextSpeech.Length;
 				return;
 			}
-			if(vm.IsSpeakTextNewLine){
+			if (vm.IsSpeakTextNewLine)
+			{
 				vm.TextSpeech += "\n" + vm.OcrText;
+				vm.selectionStart = vm.TextSpeech.Length;
 				return;
 			}
-			
+
 		}
+		public static async Task ClearSpeakText(ViewModel vm, object parameter)
+		{
+			vm.TextSpeech = "";
+		}
+
 		public static async Task SetClipboardText(ViewModel vm, object parameter)
 		{
 			Clipboard.SetData(DataFormats.Text, (object)vm.TextSpeech);

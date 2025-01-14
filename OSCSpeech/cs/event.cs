@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 namespace OcrSpeech
 {
@@ -35,10 +36,6 @@ namespace OcrSpeech
 			//処理
 		}
 	}
-}
-/*	
-
-	
 	public class TextBoxHelper
 	{
 		public static readonly DependencyProperty SelectionStartProperty =
@@ -124,5 +121,7 @@ namespace OcrSpeech
 		{
 
 		}
-}
+	}
 
+
+}
