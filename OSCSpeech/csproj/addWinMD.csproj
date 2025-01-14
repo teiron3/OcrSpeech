@@ -11,4 +11,8 @@
     <Reference Include="Windows.Foundation.FoundationContract.winmd">
         <HintPath>dll\Windows.Foundation.FoundationContract.winmd</HintPath>
     </Reference>
+
+    <Reference Include="System.Speech.Recognition"></Reference>
+    <Reference Include="System.Speech.Synthesis"></Reference>
+    <Reference Include="System.Speech"></Reference>
 </ItemGroup>
