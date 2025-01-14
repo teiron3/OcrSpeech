@@ -57,6 +57,7 @@
 		<TextBox Text="{Binding OcrText}"
 				 Width="600"
 				 Height="50"
+				 TextWrapping="Wrap"
 				 Margin="0,0,0,20"/>
 
 		<StackPanel Orientation="Horizontal">
@@ -80,8 +81,11 @@
 		<TextBox Text="{Binding TextSpeech}"
 				 Width="600"
 				 Height="250"
+				 TextWrapping="Wrap"
 				 local:TextBoxHelper.SelectionStart="{Binding selectionStart,Mode=TwoWay}"
-				 local:TextBoxHelper.SelectionLength="{Binding selectionLength,Mode=TwoWay}"/>
+				 local:TextBoxHelper.SelectionLength="{Binding selectionLength,Mode=TwoWay}"
+				 local:TextBoxHelper.getFocus="{Binding IsFocus}"
+				 />
 
 		<StackPanel Orientation="Horizontal">
 			<!-- 読み上げボタンを２つ"一文字ずつ読み上げ"と"連続で読み上げ"を設置 -->
@@ -101,7 +105,6 @@
 					Margin="10,0,10,10"/>
 
 		</StackPanel>
-		<Label Content="{Binding selectionStart,Mode=OneWay}"/>
 	</StackPanel>
 </Window>
 
