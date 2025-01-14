@@ -7,8 +7,7 @@
 	Title="OcrSpeech"
 	Width="700"
 	Height="800"
-	AllowDrop="True"
-	>
+	AllowDrop="True">
 	<!-- add init cscode
 		this.DataContext = (vm = new ViewModel());
 	-->
@@ -23,7 +22,7 @@
 		</i:EventTrigger>
 		</i:Interaction.Triggers>
 	-->
-		
+
 	<!-- add event example #2
 		need to add event.cs
 		<Label Content="Hello World" Drop="" DragOver="" MouseDoubleClick="" />
@@ -31,42 +30,78 @@
 
 	<StackPanel>
 		<StackPanel Orientation="Horizontal">
-			<Button Content="クリップボードの画像からテキストを取得" Command="{Binding GetTextFromPicture}" Margin="10,0,10,0"/>
-			<Button Content="連続でテキストを取得" Command="{Binding GetTextFromPictureContinue}" />
+			<Button Content="クリップボードの画像からテキストを取得"
+					Command="{Binding GetTextFromPicture}"
+					Margin="10,0,10,0"/>
+			<Button Content="連続でテキストを取得"
+					Command="{Binding GetTextFromPictureContinue}"/>
 		</StackPanel>
-		<Image Source="{Binding OcrImage}" Width="600" Height="150" />
+		<Image Source="{Binding OcrImage}"
+			   Width="600"
+			   Height="150"/>
 		<StackPanel Orientation="Horizontal">
-		<!-- 2値化するかのチェックボタンと閾値のスライダー、反転するかのチェックボタンを作成-->
-		<CheckBox Content="2値化" IsChecked="{Binding IsThreshold}" Margin="10,0,10,0"/>
-		<Slider Value="{Binding Threshold}" Minimum="0" Maximum="255" Width="400" />
+			<!-- 2値化するかのチェックボタンと閾値のスライダー、反転するかのチェックボタンを作成-->
+			<CheckBox Content="2値化"
+					  IsChecked="{Binding IsThreshold}"
+					  Margin="10,0,10,0"/>
+			<Slider Value="{Binding Threshold}"
+					Minimum="0"
+					Maximum="255"
+					Width="400"/>
 		</StackPanel>
-		<CheckBox Content="反転" IsChecked="{Binding IsInvert}" Margin="10,0,10,0"/>
-		
+		<CheckBox Content="反転"
+				  IsChecked="{Binding IsInvert}"
+				  Margin="10,0,10,0"/>
+
 		<Label Margin="10,0,10,0">OCRテキスト</Label>
-		<TextBox Text="{Binding OcrText}" Width="600" Height="50" Margin="0,0,0,20"/>
-		
-		<StackPanel Orientation="Horizontal">
-		<!-- 読み上げ用のTextBoxにOcrTextのテキスト内容をコピーするボタンを作成。コピー方法として、カーソル位置、テキストの後ろ、行を変えてのラジオボタンを設置-->
-		<Button Content="読み上げ用テキストにコピー" Command="{Binding toTextSpeech}" Margin="10,0,10,0"/>
+		<TextBox Text="{Binding OcrText}"
+				 Width="600"
+				 Height="50"
+				 Margin="0,0,0,20"/>
 
-		<RadioButton Content="カーソル位置" IsChecked="{Binding IsSpeakTextPosition}" Margin="10,0,10,0"/>
-		<RadioButton Content="テキストの後ろ" IsChecked="{Binding IsSpeakTextEnd}" Margin="10,0,10,0"/>
-		<RadioButton Content="行を変えて" IsChecked="{Binding IsSpeakTextNewLine}" Margin="10,0,10,0"/>
+		<StackPanel Orientation="Horizontal">
+			<!-- 読み上げ用のTextBoxにOcrTextのテキスト内容をコピーするボタンを作成。コピー方法として、カーソル位置、テキストの後ろ、行を変えてのラジオボタンを設置-->
+			<Button Content="読み上げ用テキストにコピー"
+					Command="{Binding toTextSpeech}"
+					Margin="10,0,10,0"/>
+
+			<RadioButton Content="カーソル位置"
+						 IsChecked="{Binding IsSpeakTextPosition}"
+						 Margin="10,0,10,0"/>
+			<RadioButton Content="テキストの後ろ"
+						 IsChecked="{Binding IsSpeakTextEnd}"
+						 Margin="10,0,10,0"/>
+			<RadioButton Content="行を変えて"
+						 IsChecked="{Binding IsSpeakTextNewLine}"
+						 Margin="10,0,10,0"/>
 
 		</StackPanel>
 
-		<TextBox Text="{Binding TextSpeech}" Width="600" Height="250" />
+		<TextBox Text="{Binding TextSpeech}"
+				 Width="600"
+				 Height="250"
+				 local:TextBoxHelper.SelectionStart="{Binding selectionStart,Mode=TwoWay}"
+				 local:TextBoxHelper.SelectionLength="{Binding selectionLength,Mode=TwoWay}"/>
 
 		<StackPanel Orientation="Horizontal">
-		<!-- 読み上げボタンを２つ"一文字ずつ読み上げ"と"連続で読み上げ"を設置 -->
-		<Button Content="一文字ずつ読み上げ" Command="{Binding SpeakChar}" Margin="10,0,10,0"/>
-		<Button Content="連続で読み上げ" Command="{Binding SpeakText}" Margin="10,0,50,0"/>
+			<!-- 読み上げボタンを２つ"一文字ずつ読み上げ"と"連続で読み上げ"を設置 -->
+			<Button Content="一文字ずつ読み上げ"
+					Command="{Binding SpeakChar}"
+					Margin="10,0,10,0"/>
+			<Button Content="連続で読み上げ"
+					Command="{Binding SpeakText}"
+					Margin="10,0,50,0"/>
 
-		<!-- speakTextのクリアボタンとクリップボードに張り付けるボタンを設置-->
-		<Button Content="テキストクリア" Command="{Binding ClearSpeakText}" Margin="10,0,10,10"/>
-		<Button Content="テキストをクリップボードに張り付け" Command="{Binding SetClipboardText}" Margin="10,0,10,10"/>
-		
+			<!-- speakTextのクリアボタンとクリップボードに張り付けるボタンを設置-->
+			<Button Content="テキストクリア"
+					Command="{Binding ClearSpeakText}"
+					Margin="10,0,10,10"/>
+			<Button Content="テキストをクリップボードに張り付け"
+					Command="{Binding SetClipboardText}"
+					Margin="10,0,10,10"/>
+
 		</StackPanel>
+		<Label Content="{Binding selectionStart,Mode=OneWay}"/>
 	</StackPanel>
 </Window>
 
