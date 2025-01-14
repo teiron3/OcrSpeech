@@ -9,3 +9,6 @@ bool	IsSpeakTextNewLine 	false
 string	TextSpeech	""
 int	selectionStart	0
 int	selectionLength	0
+int	volume	50
+int	rate	0
+bool	IsFocus	false
