@@ -21,6 +21,20 @@ namespace OcrSpeech
 	{
 		public static async Task SpeakChar(ViewModel vm, object parameter)
 		{
+			SpeechSynthesizer synth = new SpeechSynthesizer();
+			synth.SetOutputToDefaultAudioDevice();
+			synth.Volume = vm.volume;
+			synth.Rate = vm.rate;
+			int len = vm.TextSpeech.Length;
+			for (int i = 0; i < len; i++)
+			{
+				vm.IsFocus = true;
+				vm.selectionStart = i;
+				vm.selectionLength = 1;
+				await Task.Delay(100);
+				synth.Speak(vm.TextSpeech.Substring(i, 1));
+			}
+			
 		}
 	}
 }

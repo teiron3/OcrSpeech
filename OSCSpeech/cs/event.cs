@@ -100,7 +100,7 @@ namespace OcrSpeech
 		public static readonly DependencyProperty getFocusProperty =
 			DependencyProperty.RegisterAttached(
 				"getFocus",
-				typeof(int),
+				typeof(bool),
 				typeof(TextBoxHelper),
 				new PropertyMetadata(OngetFocusChanged)
 			);
@@ -119,7 +119,9 @@ namespace OcrSpeech
 
 		private static void OngetFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
-
+		}
+		private static void TextBox_GotFocus(object sender, RoutedEventArgs e)
+		{
 		}
 	}
 

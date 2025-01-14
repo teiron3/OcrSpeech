@@ -92,8 +92,8 @@ namespace OcrSpeech
 					vm.selectionStart = vm.TextSpeech.Length;
 					return;
 				}
-				int len = vm.TextSpeech.Length + vm.OcrText.Length;
-				vm.TextSpeech = vm.TextSpeech.Substring(0, vm.selectionStart) + vm.OcrText + vm.TextSpeech.Substring(vm.selectionStart + 1);
+				int len = vm.selectionStart + vm.OcrText.Length;
+				vm.TextSpeech = vm.TextSpeech.Substring(0, vm.selectionStart) + vm.OcrText + vm.TextSpeech.Substring(vm.selectionStart);
 				vm.selectionStart = len;
 				return;
 			}
