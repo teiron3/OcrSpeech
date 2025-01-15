@@ -93,10 +93,14 @@ namespace OcrSpeech
 		private static void OnSelectionLengthChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
 			var textBox = d as TextBox;
-			if (textBox == null) return;
-			textBox.SelectionLength = (int)e.NewValue;
+			if (textBox != null && textBox.SelectionLength != (int)e.NewValue)
+			{
+				textBox.SelectionLength = (int)e.NewValue;
+			}
 		}
 
+		
+		
 		public static readonly DependencyProperty getFocusProperty =
 			DependencyProperty.RegisterAttached(
 				"getFocus",
@@ -111,17 +115,39 @@ namespace OcrSpeech
 		public static void SetgetFocus(DependencyObject obj, bool value)
 		{
 			obj.SetValue(getFocusProperty, value);
-			if (value)
-			{
-				(obj as TextBox).Focus();
-			}
 		}
-
 		private static void OngetFocusChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
 		{
+
+			var textBox = d as TextBox;
+			if (textBox == null) return;
+			if ((bool)e.NewValue)
+			{
+				textBox.Focus();
+				textBox.GotFocus -= TextBox_GotFocus;
+				textBox.LostFocus += TextBox_LostFocus;
+			}
+			else
+			{
+				textBox.GotFocus += TextBox_GotFocus;
+				textBox.LostFocus -= TextBox_LostFocus;
+			}
 		}
 		private static void TextBox_GotFocus(object sender, RoutedEventArgs e)
 		{
+			var textBox = sender as TextBox;
+			if(textBox != null)
+			{
+				SetgetFocus(textBox, true);
+			}
+		}
+		private static void TextBox_LostFocus(object sender, RoutedEventArgs e)
+		{
+			var textBox = sender as TextBox;
+			if(textBox != null)
+			{
+				SetgetFocus(textBox, false);
+			}
 		}
 	}
 

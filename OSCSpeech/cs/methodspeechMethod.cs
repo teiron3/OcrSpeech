@@ -24,16 +24,20 @@ namespace OcrSpeech
 			SpeechSynthesizer synth = new SpeechSynthesizer();
 			synth.SetOutputToDefaultAudioDevice();
 			synth.Volume = vm.volume;
-			synth.Rate = vm.rate;
+			synth.Rate = -5;
+			vm.selectionLength = 0;
 			int len = vm.TextSpeech.Length;
-			for (int i = 0; i < len; i++)
+			int start = vm.selectionStart;
+			string text = vm.TextSpeech;
+			await Task.Delay(100);
+			for (int i = start; i < len; i++)
 			{
 				vm.IsFocus = true;
 				vm.selectionStart = i;
 				vm.selectionLength = 1;
-				await Task.Delay(100);
-				synth.Speak(vm.TextSpeech.Substring(i, 1));
+				await Task.Run(() => synth.Speak(text.Substring(i, 1)));
 			}
+				vm.IsFocus = false;
 			
 		}
 	}
