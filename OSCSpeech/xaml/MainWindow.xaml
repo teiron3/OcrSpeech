@@ -84,7 +84,7 @@
 				 TextWrapping="Wrap"
 				 local:TextBoxHelper.SelectionStart="{Binding selectionStart,Mode=TwoWay}"
 				 local:TextBoxHelper.SelectionLength="{Binding selectionLength,Mode=TwoWay}"
-				 local:TextBoxHelper.getFocus="{Binding IsFocus}"
+				 local:TextBoxHelper.getFocus="{Binding IsFocus,Mode=TwoWay}"
 				 />
 
 		<StackPanel Orientation="Horizontal">
