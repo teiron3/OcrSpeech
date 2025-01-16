@@ -1,4 +1,4 @@
-System.Windows.Media.Imaging.BitmapSource	OcrImage	null
+﻿System.Windows.Media.Imaging.BitmapSource	OcrImage	null
 bool	IsThreshold	false
 int	Threshold	100
 bool	IsInvert	false
@@ -10,5 +10,6 @@ string	TextSpeech	""
 int	selectionStart	0
 int	selectionLength	0
 int	volume	50
-int	rate	0
+int	rate	-4
 bool	IsFocus	false
+string	playing	"再生"
