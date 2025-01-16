@@ -44,6 +44,7 @@
 			<CheckBox Content="2値化"
 					  IsChecked="{Binding IsThreshold}"
 					  Margin="10,0,10,0"/>
+			<Label Content="閾値" />
 			<Slider Value="{Binding Threshold}"
 					Minimum="0"
 					Maximum="255"
@@ -81,6 +82,7 @@
 		<TextBox Text="{Binding TextSpeech}"
 				 Width="600"
 				 Height="250"
+				 Margin="10,10,0,10"
 				 TextWrapping="Wrap"
 				 local:TextBoxHelper.SelectionStart="{Binding selectionStart,Mode=TwoWay}"
 				 local:TextBoxHelper.SelectionLength="{Binding selectionLength,Mode=TwoWay}"
@@ -88,22 +90,43 @@
 				 />
 
 		<StackPanel Orientation="Horizontal">
-			<!-- 読み上げボタンを２つ"一文字ずつ読み上げ"と"連続で読み上げ"を設置 -->
-			<Button Content="一文字ずつ読み上げ"
-					Command="{Binding SpeakChar}"
-					Margin="10,0,10,0"/>
-			<Button Content="連続で読み上げ"
-					Command="{Binding SpeakText}"
-					Margin="10,0,50,0"/>
-
 			<!-- speakTextのクリアボタンとクリップボードに張り付けるボタンを設置-->
 			<Button Content="テキストクリア"
 					Command="{Binding ClearSpeakText}"
+					Height="20"
 					Margin="10,0,10,10"/>
 			<Button Content="テキストをクリップボードに張り付け"
 					Command="{Binding SetClipboardText}"
+					Height="20"
 					Margin="10,0,10,10"/>
+		</StackPanel>
 
+		<StackPanel Orientation="Horizontal">
+			<!-- 読み上げボタンを２つ"一文字ずつ読み上げ"と"連続で読み上げ"を設置 -->
+			<Label Content="一文字ずつ再生" />
+			<Button Content="{Binding playing}"
+					Command="{Binding SpeakChar}"
+					Height="20"
+					Margin="5,0,10,0"/>
+			<Button Content="連続で読み上げ"
+					Command="{Binding SpeakText}"
+					Height="20"
+					Margin="10,0,0,0"/>
+		</StackPanel>
+
+		<StackPanel Orientation="Horizontal">
+			<Label Content="音量" Margin="10,0,10,0"/>
+			<Slider Value="{Binding volume}"
+					Minimum="0"
+					Maximum="100"
+					Width="400"/>
+		</StackPanel>
+		<StackPanel Orientation="Horizontal">
+			<Label Content="速度" Margin="10,0,10,0"/>
+			<Slider Value="{Binding rate}"
+					Minimum="-10"
+					Maximum="10"
+					Width="400"/>
 		</StackPanel>
 	</StackPanel>
 </Window>
