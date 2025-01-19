@@ -42,14 +42,16 @@ namespace OcrSpeech
 			using (var memoryStream = new MemoryStream())
 			{
 				vm.OcrText = "";
-				var bitmapSource = Clipboard.GetImage();
+				vm.OcrImage = Clipboard.GetImage();
+				GetOcrImage(vm);
+
 				var maxPixelSize = OcrEngine.MaxImageDimension * 0.8;
 
-				var scale = (maxPixelSize / bitmapSource.Width) > (maxPixelSize / bitmapSource.Height) ? (maxPixelSize / bitmapSource.Height) : (maxPixelSize / bitmapSource.Width);
+				var scale = (maxPixelSize / vm.OcrImage.Width) > (maxPixelSize / vm.OcrImage.Height) ? (maxPixelSize / vm.OcrImage.Height) : (maxPixelSize / vm.OcrImage.Width);
 
 				var transeformeBitmap = new TransformedBitmap();
 				transeformeBitmap.BeginInit();
-				transeformeBitmap.Source = bitmapSource;
+				transeformeBitmap.Source = vm.OcrImage;
 				transeformeBitmap.Transform = new ScaleTransform(scale, scale);
 				transeformeBitmap.EndInit();
 
