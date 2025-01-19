@@ -41,19 +41,32 @@
 			   Height="150"/>
 		<StackPanel Orientation="Horizontal">
 			<!-- 2値化するかのチェックボタンと閾値のスライダー、反転するかのチェックボタンを作成-->
-			<CheckBox Content="2値化"
+			<CheckBox Content="モノクロ化"
 					  IsChecked="{Binding IsThreshold}"
 					  Margin="10,0,10,0"/>
-			<Label Content="閾値" />
+			<CheckBox Content="白黒反転"
+					  IsChecked="{Binding IsInvert}"
+					  Margin="10,0,10,0"/>
+
+			<CheckBox Content="赤色"
+					  IsChecked="{Binding IsRed}"
+					  Margin="10,0,10,0"/>
+			<CheckBox Content="緑色"
+					  IsChecked="{Binding IsGreen}"
+					  Margin="10,0,10,0"/>
+			<CheckBox Content="青色"
+					  IsChecked="{Binding IsBlue}"
+					  Margin="10,0,10,0"/>
+		</StackPanel>
+		<StackPanel Orientation="Horizontal"
+				Margin="10,10,10,0">
+			<Label Content="薄い←"/>
 			<Slider Value="{Binding Threshold}"
 					Minimum="0"
 					Maximum="255"
 					Width="400"/>
+			<Label Content="→濃い"/>
 		</StackPanel>
-		<CheckBox Content="反転"
-				  IsChecked="{Binding IsInvert}"
-				  Margin="10,0,10,0"/>
-
 		<Label Margin="10,0,10,0">OCRテキスト</Label>
 		<TextBox Text="{Binding OcrText}"
 				 Width="600"
@@ -86,8 +99,7 @@
 				 TextWrapping="Wrap"
 				 local:TextBoxHelper.SelectionStart="{Binding selectionStart,Mode=TwoWay}"
 				 local:TextBoxHelper.SelectionLength="{Binding selectionLength,Mode=TwoWay}"
-				 local:TextBoxHelper.getFocus="{Binding IsFocus,Mode=TwoWay}"
-				 />
+				 local:TextBoxHelper.getFocus="{Binding IsFocus,Mode=TwoWay}"/>
 
 		<StackPanel Orientation="Horizontal">
 			<!-- speakTextのクリアボタンとクリップボードに張り付けるボタンを設置-->
@@ -103,7 +115,7 @@
 
 		<StackPanel Orientation="Horizontal">
 			<!-- 読み上げボタンを２つ"一文字ずつ読み上げ"と"連続で読み上げ"を設置 -->
-			<Label Content="一文字ずつ再生" />
+			<Label Content="一文字ずつ再生"/>
 			<Button Content="{Binding playing}"
 					Command="{Binding SpeakChar}"
 					Height="20"
@@ -115,14 +127,16 @@
 		</StackPanel>
 
 		<StackPanel Orientation="Horizontal">
-			<Label Content="音量" Margin="10,0,10,0"/>
+			<Label Content="音量"
+				   Margin="10,0,10,0"/>
 			<Slider Value="{Binding volume}"
 					Minimum="0"
 					Maximum="100"
 					Width="400"/>
 		</StackPanel>
 		<StackPanel Orientation="Horizontal">
-			<Label Content="速度" Margin="10,0,10,0"/>
+			<Label Content="速度"
+				   Margin="10,0,10,0"/>
 			<Slider Value="{Binding rate}"
 					Minimum="-10"
 					Maximum="10"
