@@ -1,6 +1,9 @@
 ﻿System.Windows.Media.Imaging.BitmapSource	OcrImage	null
 bool	IsThreshold	false
-int	Threshold	100
+bool	IsRed	true
+bool	IsGreen	true
+bool	IsBlue	true
+int	Threshold	20
 bool	IsInvert	false
 string	OcrText	""
 bool	IsSpeakTextPosition	true
